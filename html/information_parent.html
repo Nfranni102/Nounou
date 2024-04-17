@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/information_parent.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Formulaire pour les Parents</h2>
+        <form action="../php/information_parent.php" method="post">
+            <div class="form-group">
+                <label for="type-garde">Je recherche une :</label>
+                <select name="type_garde" id="type_garde">
+                    <option value="Nounou">Nounou</option>
+                    <option value="Babysitter">Babysitter</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="experience">Qui à une expérience en garde d'enfants :</label>
+                <select name="experience" id="experience">
+                    <option value="moins 1 ans">Moins de 1 ans</option>
+                    <option value="1 ans et 3 ans">1 - 3 ans</option>
+                    <option value="plus de 3 ans">Plus de 3 ans d'experience</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="disponibilite">Quel type de garde souhaitez-vous ? :</label>
+                <select name="disponibilite" id="disponibelite">
+                    <option value="Temps Plein">Temps plein (jours, semaine)</option>
+                    <option value="Temps Partiel">Temps Partiel(sortie)</option>
+                    <option value="Occasionnel">Occasionnellement(week-end, mariage, soirée)</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="ageEnfants">Quel ages ont vos enfants à garder chers Parents :</label>
+                <select name="ageEnfant" id="ageEnfant">
+                    <option value="0 a 6 mois">0 à 6 mois</option>
+                    <option value="6 mois et 4 ans">6 mois et 4 ans</option>
+                    <option value="4 ans et 7 ans">4 ans et 7 ans</option>
+                    <option value="7 ans et plus">7 ans et plus</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="allergies">Allergies des enfants ou conditions à prendre en compte :</label>
+                <textarea name="allergies" id="allergies" rows="4"></textarea>
+            </div>
+
+
+            <div class="form-group">
+                <label for="taches">Taches supplementaires que vous demanderez  à Nounou:</label>
+                <select name="taches" id="taches">
+                    <option value="aucun">Aucun</option>
+                    <option value="preparer le repas des enfnats">preparer le repas des enfnats</option>
+                    <option value="faire la lessive">faire la lessive</option>
+                    <option value="aider à faire le devoir">Aider à faire le devoir</option>
+                    <option value="prendre le bain">Faire le bain des enfants</option>
+                </select>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="langues">Quels langues souhaitez-vous quel parle aux enfants :</label>
+                <input type="text" name="langues" id="langues" placeholder="Ex: Francais, Anglais">
+            </div>
+
+
+            <div class="form-group">
+                <label for="niveau">Quel niveau d'etude demandez-vous chers Parents :</label>
+                <select name="niveau_étude" id="niveau_étude">
+                    <option value="Aucun">Aucun</option>
+                    <option value="CEPE">CEPE</option>
+                    <option value="BEPC">BEPC</option>
+                    <option value="BAC">BAC</option>
+                    <option value="LICENCE">LICENCE</option>
+                    <option value="MASTER">MASTER</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="debut de garde">Début du commencement de la garde :</label>
+                <input type="date" id="debut de garde" name="debut de garde">
+            </div>
+
+            <div class="form-group">
+                <label for="fin de garde">Fin de la garde :</label>
+                <input type="date" name="fin de garde" id="fin de garde">
+            </div>
+
+
+            <div class="form-group">
+                <label for="lieu de garde">Lieu de garde:</label><br>
+                <input type="radio" name="lieu de garde" id="chez moi" value="chez moi">
+                <label for="chez moi">Chez moi</label>
+                <input type="radio" name="lieu de garde" id="chez parents" value="chez parents">
+                <label for="chez parents">Chez la nounou</label>
+            </div>
+
+
+            <div class="form-group">
+                <label for="prix">Combien donnez-vous par semaine à la Nounou ?</label>
+                <input type="text"  name="prix" id="prix" placeholder="Entrez votre prix ">
+            </div>
+
+
+            <div class="form-group">
+                <label for="emploi du temps">Planifier votre emploi du temps :</label>
+                <input type="text" name="emploi du temps" id="emploi du temps" placeholder="Ex: Lundi: 8h-17h, Mardi:10h-19h">
+            </div>
+
+
+            <div class="form-group">
+                <label for="annonce">PUblier votre annonce </label>
+                <textarea name="annonce" id="annonce" rows="4"></textarea>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="contact">Preferences de contact :</label>
+                <input type="radio" name="contact" id="whatsapp" value="whatsapp">
+                <label for="whatsapp">Whatsapp</label>
+                <input type="radio" name="contact" id="email" value="email">
+                <label for="email">Email</label>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="numeroEmail">Numero de téléphone ou email :</label>
+                <input type="text" name="numeroEmail" id="numeroEmail">
+            </div>
+
+            <button type="submit">Publier</button>
+        </form>
+    </div>
+    
+</body>
+</html>

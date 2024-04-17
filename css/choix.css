@@ -1,0 +1,102 @@
+body{
+    background: url(../image/baby1.png) no-repeat;
+    background-size: cover;
+}
+.main-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.column {
+    text-align: center;
+    border-radius: 10px; /* Ajoute un coin arrondi de 10px */
+    padding: 20px; /* Ajoute un espace intérieur de 20px */
+}
+
+
+.column1{
+    text-align: center;
+    border-radius: 10px; /* Ajoute un coin arrondi de 10px */
+    padding: 50px; /* Ajoute un espace intérieur de 20px */
+}
+
+.column img {
+    width: 100px; /* Ajustez selon vos besoins */
+}
+
+.column h2{
+    color: coral; /* Ajustez la couleur selon vos préférences */
+}
+
+.column p{
+    color:white;
+}
+
+.column1 h2{
+    color: blue;
+}
+.column1 p{
+    color: white;
+}
+
+button {
+    border-radius: 50px;
+    padding: 6px;
+    background: coral;
+    border:none ;
+    color: white;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+.column1 button{
+    border-radius: 5px;
+}
+
+.column button{
+    border-radius: 5px;
+}
+
+
+.membre button{
+    border-radius: 5px;
+}
+
+.membre{
+    text-align: center;
+    border-radius: 10px; /* Ajoute un coin arrondi de 10px */
+    padding: 20px; /* Ajoute un espace intérieur de 20px */
+    
+}
+
+.membre p{
+    color: white;
+}
+
+
+footer{
+    background:#ffffff75;
+    display:flex;
+    justify-content: space-around;
+    margin-top: 200px;
+    border-radius: 10px 10px 20px;
+    border: 2px solid beige;
+    border-radius: 5px 5px 10px white;
+    border-top: 20px solid #ffffff75;
+    border-left: 2px solid #ffffff75;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+}
+
+
+.rang{
+    color: white;
+}
+
+.rang h4{
+    color: black;
+}

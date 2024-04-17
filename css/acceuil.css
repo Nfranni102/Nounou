@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+:root{
+    --black:#222;
+    --main-color:#8e44ad;
+    --white:#fff;
+    --light-black:#777;
+    --light-white:#fff9;
+    --dark-bg:rgba(0,0,0,.7);
+    --light-bg:#eee;
+    --border:.1rem solid var(--black);
+    --box-shadow:0 .5em 1rem rgba(0,0,0,.1);
+    --text-shadow:0 1.5rem 3rem rgba(0,0,0,.3);
+
+}
+
+
+*{
+    font-family: "Poppins", sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    text-transform: capitalize;
+
+}
+
+html{
+    font-size: 46%;
+    
+}
+html::-webkit-scrollbar{
+    width: 1rem;
+
+}
+html::-webkit-scrollbar-track{
+    background: var(--white);
+}
+html::-webkit-scrollbar-thumb{
+background: var(--main-color);
+}
+section{
+    padding: 5rem 10%;
+}
+.btn{
+    display: inline-block;
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+    background: var(--main-color);
+    color: white;
+    cursor: pointer;
+}
+.btn:hover{
+    background: black;
+}
+.heading-title{
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 6rem;
+}
+    /*mise en forme du header*/
+    .header{
+        position: sticky;
+        top: 0; left: 0; right: 0;
+        z-index: 1000 !important;
+        background: var(--white);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        box-shadow: var(--box-shadow);
+
+    }
+    .header .logo{
+        font-size:2.5rem;
+        color: #222;
+        
+    }
+.header .navbar{
+    z-index: 1000;
+
+}
+.header .navbar{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 1000;
+    transition: 0.6s ease;
+    font-size: 2rem;
+}
+#menu-btn{
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #222;
+    display: none;
+}
+
+.home .slide{
+   text-align: center;
+   padding: 2rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-size: cover !important;
+   background-position: center !important; 
+   min-height: 75rem;
+   
+
+} 
+.home .slide .content{
+    width: 85rem;
+}
+@keyframes fade{
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+    
+.home .slide .content span{
+    display: block;
+    font-size: 3rem;
+    color: white;
+    padding-bottom: 1rem;
+    animation: fade .4s linear backwards ;
+}
+
+.content h3{
+    font-size: 2vw;
+    text-transform: uppercase;
+    color: white;
+    line-height: 1;
+    text-shadow: black;
+    padding: 1rem 0;
+    animation: fade .8s linear backwards ;
+}
+    
+.swiper-button-next,
+.swiper-button-prev{
+ height: 7rem;
+ width: 7rem;
+ background: #fff;
+ 
+
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+ height: 7rem;
+ width: 7rem;
+ background: #fff;
+ 
+
+}
+
+.service .container{
+    gap: 1.4rem;
+    display: flex;
+}
+.service .container .box{
+        text-align: center;
+        padding: 3rem 2rem;
+        cursor: pointer;    
+}
+.box img{
+    width: 80px;
+    height: 80px;
+
+}
+.service .container .box:hover{
+    background: blue;
+}
+.box h3{
+    font-size: 1.7rem;
+    padding-top: 1rem;
+}
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:1200px){
+    section{
+        padding: 3rem 5%;
+    }
+}
+@media(max-width:991px){
+    html{
+        font-size: 55%;
+    }
+    section{
+        padding: 3rem 2rem;
+    }
+}
+@media(max-width:800px){
+    #menu-btn{
+        display: inline-block;
+        transition: .4s linear;
+    }
+    #menu-btn.fa-times{
+        transform: rotate(180deg);
+    }
+
+    .header .navbar{
+        position: absolute;
+        top:90%; left: 0;right: 0;
+        background: white;
+        padding: 2rem;
+        border-top: var(--border);
+        clip-path: polygon(0 0,100% 0,100% 0,0 0);
+        transition: .4s linear;
+
+    }
+
+    
+    .header .navbar.active{
+clip-path: polygon(0 0,100% 0,100% 100%, 0 100%);
+    }
+
+    .header .navbar a{
+        display: block;
+        text-align: center;
+        margin: 0rem;
+    }
+}
+
+@media(max-width:450px){
+
+    html{
+        font-size: 75%;
+    }
+    
+}
+
+.home{
+    padding: 0;
+}
+.opper{
+    display:flex;
+    align-items: center;
+}
+.opper .image img{
+    width: 240%;
+}
+.opper .image img{
+    flex:  1 1 41rem;
+}
+.opper .content p{
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 3rem;
+    background: var(--light-white);
+}
+.opper .content h3{
+    font-size: 2rem;
+    color: black;
+}
+.opper .content a{
+    display: inline-block;
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+    background: var(--main-color);
+    color: white;
+    cursor: pointer;
+}
+.offre {
+    text-align: right;
+}
+.offre .content{
+    max-width: 70rem;
+    margin: 0;
+}
+.offre .content h3{
+    text-transform: uppercase;
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 6rem;
+    width: 100%;
+    
+}
+.offre .content p{
+    font-size: 2rem;
+    color: var(--light-black);
+    line-height: 2;
+    padding: 1rem 0;
+}
+.offre .content a{
+    display: inline-block;
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+    background: var(--main-color);
+    color: white;
+    cursor: pointer;
+    
+}
+.footer {
+    background: url(image/footer.jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+.footer .box-container{
+    display: flex;
+    gap: 2rem;
+    
+}
+.footer .box-container .box h3{
+    color: white;
+    font-size: 1.5rem;
+    display: block;
+}
+.footer .box-container .box a{
+    color: var(--light-white);
+    font-size: 1.5rem;
+    display: block;
+}
+.footer .box-container .box a i{
+    color: black;
+    padding-right: 0.5rem;
+    transition: .2s linear;
+}
+.footer .box-container .box a:hover i{
+    padding-right: 1rem;
+}
+.footer .home-right {
+    text-align: center;
+    padding-top: 2.5rem;
+    margin-top: 3rem;
+    border-top: .1rem solid var(--light-white);
+    font-size: 2rem;
+    color: white;
+}
+.footer .home-right span{
+    color:white;
+}
