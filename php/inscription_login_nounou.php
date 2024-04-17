@@ -25,6 +25,9 @@ $photo_name = $_FILES['photo']['name'];
 // Emplacement temporaire du fichier
 $photo_tmp = $_FILES['photo']['tmp_name'];
 
+// Hachage du mot de passe
+$mot_de_passe_hash = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
+
 // Déplacer le fichier téléchargé vers le dossier de destination
 $photo_destination = 'chemin/vers/le/dossier/destination/' . $photo_name;
 move_uploaded_file($photo_tmp, $photo_destination);
