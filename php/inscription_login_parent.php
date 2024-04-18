@@ -1,49 +1,51 @@
 <?php
-// Connexion a la base de donnees
+// Connexion à la base de données (à remplacer par vos propres informations de connexion)
 $servername = "localhost";
-$username="root";
+$username = "root";
 $password = "";
 $dbname = "garderie";
 
 // Création de la connexion
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verification de la connexion
+// Vérification de la connexion
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Récuperation des données soumises par le formulaire
-
+// Récupération des données du formulaire
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
-$email = $_POST["email"];
+$email = $_POST['email'];
 $mot_de_passe = $_POST['mot_de_passe'];
 $ville = $_POST['ville'];
 $pays = $_POST['pays'];
-$photo = $_FILES['photo']['name'];
+// Nom du fichier
+$photo_name = $_FILES['photo']['name'];
+// Emplacement temporaire du fichier
+$photo_tmp = $_FILES['photo']['tmp_name'];
 
+// Hachage du mot de passe
+$mot_de_passe_hash = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
 
-// Traitement de l'upload de la photo
+// Déplacer le fichier téléchargé vers le dossier de destination
+$photo_destination = 'chemin/vers/le/dossier/destination/' . $photo_name;
+move_uploaded_file($photo_tmp, $photo_destination);
 
-$target_dir = "uploads/";
-$target_file = $target_dir .basename($_FILES["photo"]["name"]);
-move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
-
-
-// Insertion des données dans la base de données
-
-$sql = "INSERT INTO utilisateur_parent (nom, prenom, email, mot_de_passe, ville, pays, photo) VALUES ('$nom', '$prenom', '$email', '$mot_de_passe', '$ville', '$pays', '$photo')";
-
+// Requête SQL pour insérer les données dans la base de données
+$sql = "INSERT INTO utilisateur_parent (nom, prenom, email, mot_de_passe, ville, pays, photo) VALUES ('$nom', '$prenom', '$email', '$mot_de_passe', '$ville', '$pays', '$photo_destination')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Nouvel utilisateur crée avec succée";
-} else{
-    echo "Erreur : " . $sql . "<br>" . $conn->error;
+    echo "Enregistrement réussi";
+} else {
+    echo "Erreur: " . $sql . "<br>" . $conn->error;
 }
 
+// Redirection vers la page information_nounou.html
+header("Location: ../html/information_parent.html");
+exit;
 
-// Fermeture de la connexion
+// Fermeture de la connexion à la base de données
 $conn->close();
 
 ?>

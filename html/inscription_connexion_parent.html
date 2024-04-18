@@ -120,7 +120,14 @@
                                     <option value="Libéria">Libéria</option>
                                     <option value="Libye">Libye</option>
                 </select>
-                <input type="file" name="photo" id="photo" accept="image/*" required>
+
+                
+                <label for="photo">Ajouter une photo</label>
+<input type="file" name="photo" id="photo" accept="image/*" style="display: none;">
+<button type="button" onclick="document.getElementById('photo').click();">entrer votre photo</button>
+                
+
+
                 <button>Creer le compte</button>
             </form>
         </div>
