@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 }
 
 // Requête SQL pour obtenir les informations de l'utilisateur connecté
-$sql = "SELECT ville, nom, prenom, pays, email FROM utilisateur_parent WHERE id_parent = ?";
+$sql = "SELECT ville, nom, prenom, pays, email FROM utilisateur_parent WHERE id_parent = 1";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_parent);
 $stmt->execute();
