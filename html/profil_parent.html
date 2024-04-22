@@ -54,7 +54,14 @@
           <div class="blog text">
             <div class="title">Infos de l'utilisateur</div>
             <p>
-              <?php include 'profil_parent.php'; ?>
+              <h1>Profil Utilisateur</h1>
+        <!-- PHP pour afficher les informations de l'utilisateur -->
+        <?php include 'profil_parent.php'; ?>
+        <p><strong>Ville:</strong> <?php echo $ville; ?></p>
+        <p><strong>Nom:</strong> <?php echo $nom; ?></p>
+        <p><strong>Prénom:</strong> <?php echo $prenom; ?></p>
+        <p><strong>Pays:</strong> <?php echo $pays; ?></p>
+        <p><strong>Email:</strong> <?php echo $email; ?></p>
             </p>
           </div>
           <div class="help text">
