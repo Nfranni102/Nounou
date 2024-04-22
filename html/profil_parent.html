@@ -67,11 +67,8 @@
           <div class="help text">
             <div class="title">Description</div>
             <p>
-              <?php
-              // PHP code to fetch announcement
-              echo $annonce;<br>
-              echo "Prix: " . $prix . "<br>";
-              ?>
+              <?php include 'annonce.php'; ?>
+              <p><strong>Annonce</strong> <?php echo $annonce; ?></p>
             </p>
           </div>
           <div class="code text">
