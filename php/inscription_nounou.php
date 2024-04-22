@@ -1,51 +1,53 @@
-<?php
-// Connexion à la base de données (à remplacer par vos propres informations de connexion)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "garderie";
+<?php 
+
+// Connexion a la base de données
+$servername= "localhost";
+$username= "root";
+$password=  "";
+$dbname= "garderie";
+
 
 // Création de la connexion
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+
 // Vérification de la connexion
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed:" . $conn->connect_error);
 }
 
-// Récupération des données du formulaire
-$nom = $_POST['nom'];
-$prenom = $_POST['prenom'];
-$email = $_POST['email'];
-$mot_de_passe = $_POST['mot_de_passe'];
-$ville = $_POST['ville'];
-$pays = $_POST['pays'];
-// Nom du fichier
-$photo_name = $_FILES['photo']['name'];
-// Emplacement temporaire du fichier
-$photo_tmp = $_FILES['photo']['tmp_name'];
 
-// Hachage du mot de passe
-$mot_de_passe_hash = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
+// Récuperation de la connexion
+$nom = mysqli_real_escape_string($conn, $_POST['nom']);
+$prenom = mysqli_real_escape_string($conn, $_POST['prenom']);
+$email = mysqli_real_escape_string($conn, $_POST['email']);
+$mot_de_passe = mysqli_real_escape_string($conn, $_POST['mot_de_passe']);
+$ville = mysqli_real_escape_string($conn, $_POST['ville']);
+$pays = mysqli_real_escape_string($conn, $_POST['pays']);
 
-// Déplacer le fichier téléchargé vers le dossier de destination
-$photo_destination = 'chemin/vers/le/dossier/destination/' . $photo_name;
-move_uploaded_file($photo_tmp, $photo_destination);
 
-// Requête SQL pour insérer les données dans la base de données
-$sql = "INSERT INTO utilisateur_nounou (nom, prenom, email, mot_de_passe, ville, pays, photo) VALUES ('$nom', '$prenom', '$email', '$mot_de_passe', '$ville', '$pays', '$photo_destination')";
+// Hashage du mot de passe
+$mot_de_passe_hash =  password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
-if ($conn->query($sql) === TRUE) {
-    echo "Enregistrement réussi";
-} else {
-    echo "Erreur: " . $sql . "<br>" . $conn->error;
+
+// Préparation de la requete SQL
+$stmt = $conn->prepare("INSERT INTO utilisateur_nounou (nom,prenom, email, mot_de_passe, ville, pays) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssss", $nom, $prenom, $email, $mot_de_passe_hash, $ville, $pays);
+
+
+// Exécution de la requete
+if ($stmt->execute()) {
+    echo "Inscription réussie!";
+} else{
+    echo "Erreur lors de l'inscription.";
 }
 
-// Redirection vers la page information_nounou.html
+// Lien pour redirigers l'utilisateur vers un autre lien
 header("Location: ../html/information_nounou.html");
 exit;
 
-// Fermeture de la connexion à la base de données
-$conn->close();
 
+// Fermeture de la connexion
+$stmt->close();
+$conn->close();
 ?>

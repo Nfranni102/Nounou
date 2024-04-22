@@ -1,43 +1,37 @@
 <?php
-// Connexion à la base de données (à remplacer par vos propres informations de connexion)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "garderie";
+// Connexion à la base de données
+$servername= "localhost";
+$username= "root";
+$password=  "";
+$dbname= "garderie";
 
 // Création de la connexion
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Vérification de la connexion
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed:" . $conn->connect_error);
 }
 
-// Récupération des données du formulaire
-$email = $_POST['email'];
-$mot_de_passe = $_POST['mot_de_passe'];
+// Récupération des données du formulaire et échappement
+$email = mysqli_real_escape_string($conn, $_POST["email"]);
+$mot_de_passe = mysqli_real_escape_string($conn, $_POST["mot_de_passe"]);
 
-// Requête SQL pour vérifier les informations de connexion dans la base de données
-$sql = "SELECT * FROM utilisateur_parent WHERE email='$email'";
-$result = $conn->query($sql);
+// Requête pour récupérer le mot de passe hashé de l'utilisateur
+$stmt = $conn->prepare("SELECT mot_de_passe FROM utilisateur_parent WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->bind_result($mot_de_passe_hash);
+$stmt->fetch();
 
-if ($result->num_rows > 0) {
-    // Utilisateur trouvé dans la base de données, vérification du mot de passe
-    $row = $result->fetch_assoc();
-    if (password_verify($mot_de_passe, $row['mot_de_passe'])) {
-        // Mot de passe correct, connexion réussie
-        // Redirection vers une autre page après la connexion
-        header("Location: ../html/");
-        exit;
-    } else {
-        // Mot de passe incorrect
-        echo "Mot de passe incorrect";
-    }
+// Vérification du mot de passe
+if (password_verify($mot_de_passe, $mot_de_passe_hash)) {
+    echo "Connexion réussie";
 } else {
-    // Utilisateur non trouvé dans la base de données
-    echo "Utilisateur non trouvé";
+    echo "Email ou mot de passe incorrect.";
 }
 
-// Fermeture de la connexion à la base de données
+// Fermeture de la connexion
+$stmt->close();
 $conn->close();
 ?>

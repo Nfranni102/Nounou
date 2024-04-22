@@ -42,6 +42,9 @@ if ($stmt->affected_rows > 0) {
     echo "Error: " . $stmt->error;
 }
 
+// Lien pour redirigers l'utilisateur vers un autre lien
+header("Location: ../html/profil_parent.html");
+exit;
 $stmt->close();
 $conn->close();
 
