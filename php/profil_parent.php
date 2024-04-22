@@ -13,13 +13,14 @@ if ($conn->connect_error) {
   die("Échec de la connexion: " . $conn->connect_error);
 }
 
-// Requête SQL pour obtenir les données de la table utilisateur_parent
-$sql = "SELECT ville, nom, prenom, pays, email FROM utilisateur_parent";
+// Requête SQL pour obtenir les données de la table utilisateur_nounou
+$sql = "SELECT id, ville, nom, prenom, pays, email FROM utilisateur_parend";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // Afficher les données de chaque ligne
   while($row = $result->fetch_assoc()) {
+    echo "ID: " . $row["id"] . "<br>";
     echo "Ville: " . $row["ville"] . "<br>";
     echo "Nom: " . $row["nom"] . "<br>";
     echo "Prénom: " . $row["prenom"] . "<br>";
